@@ -2,21 +2,25 @@
 class Flower {
   float x, y;
   float size;
+  float opacity;
   
   Flower(float x, float y, float size) {
     this.x = x;
     this.y = y;
     this.size = size;
+    this.opacity = 255; // Start fully opaque
   }
   
   void update() {
     size += growthRate; // Increase the size of the flower
+    opacity -= 2; // Decrease opacity to create fade-out effect
+    if (opacity < 0) opacity = 0; // Ensure opacity does not go below 0
   }
   
   void draw(PGraphics pg) {
     pg.noFill();
-    pg.stroke(255);
-    pg.strokeWeight(2);
+    pg.stroke(255, opacity); // Use opacity for fading effect
+    pg.strokeWeight(20);
     
     // Draw petals as circles around the center
     int numPetals = 12;
