@@ -8,12 +8,14 @@ BeatDetect beatDetect;
 PImage backgroundImg;
 PGraphics maskImg;
 color bgColor = color(52,44,44);
+//color bgColor = color(255);
 int beatsPerMeasure = 4;
 float beatsPerMinute = 118; 
 float measureDuration = 60000.0 / beatsPerMinute * beatsPerMeasure; 
 float lastBeatTime = 0;
 ArrayList<Shape> shapes;
 float growthRate = 2; 
+float increase =  37694.0;
 
 void setup() {
   size(800, 800);
@@ -53,9 +55,11 @@ void draw() {
   }
   
   if (beatDetect.isKick()) { 
-    if (currentTime >= 37694.0) {
+    // when to start adding circles on the beat
+    if (currentTime >= increase) {
       shapes.add(new Circle(random(width), random(height), 0));
     }
+    //every measure so not as frequent
     if (currentTime - lastBeatTime > measureDuration / beatsPerMeasure) {
       lastBeatTime = currentTime;
       float flowerX = random(width);
