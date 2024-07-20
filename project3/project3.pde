@@ -7,6 +7,7 @@ FFT fft;
 BeatDetect beatDetect;
 PImage backgroundImg;
 PGraphics maskImg;
+color bgColor = color(52,44,44);
 int beatsPerMeasure = 4;
 float beatsPerMinute = 118; 
 float measureDuration = 60000.0 / beatsPerMinute * beatsPerMeasure; 
@@ -78,7 +79,7 @@ void draw() {
   // Apply the mask to the background image
   PImage maskedImage = backgroundImg.copy();
   maskedImage.mask(maskImg.get());
-  background(52,44,44);
+  background(bgColor);
   image(maskedImage, 0, 0, width, height);
 }
 
