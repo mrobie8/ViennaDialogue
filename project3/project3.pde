@@ -15,7 +15,8 @@ float measureDuration = 60000.0 / beatsPerMinute * beatsPerMeasure;
 float lastBeatTime = 0;
 ArrayList<Shape> shapes;
 float growthRate = 2; 
-float increase =  37694.0;
+//float increase =  37694.0;
+float increase =  0;
 
 void setup() {
   size(800, 800);
